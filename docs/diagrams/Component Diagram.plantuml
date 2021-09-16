@@ -1,0 +1,58 @@
+@startuml "Component Diagram"
+
+component "//<<Subsystem>>//\n=**EmbededSystem**" {
+   component "Power" {
+      [Battery]
+      [SolarPanel]
+}
+   component "Movement" {
+      [Legs]
+      [Accelerometer]
+}
+   component "TelecomandInterface" {
+      [MoveInterface]
+      [TelemetryInterface]
+      [PayloadInterface]
+}
+   component "Navigation" {
+      [Mapping]
+      [Locations]
+}
+
+   component "Temperature" {
+      [TemperatureSensor]
+
+   }
+
+   ' () Teleinterface
+   ' () Telemetry
+   ' () Telemetry1 as "Telemetry"
+   ' () Telemetry2 as "Telemetry"
+   ' () Telemetry3 as "Telemetry"
+
+}
+
+Component "//<<Subsystem>>//\n=**EarthPc**" {
+   component "Interface"
+}
+
+Component Lander as "//<<Subsystem>>//\n=**Lander**" {
+   
+}
+
+Component Payload as "//<<Subsystem>>//\n=**Payload**" {
+   
+}
+
+TelecomandInterface --0)-- Interface : ""TelecomandInterface""
+
+' Telemetry -up- Temperature
+' Telemetry1 -up- Power
+' Telemetry2 -up- Movement
+' Telemetry3 -up- Navigation
+
+' Teleinterface -up- TelecomandInterface
+' Teleinterface )-- Interface
+' Teleinterface )-- Lander
+' Teleinterface )-- Payload
+@enduml
