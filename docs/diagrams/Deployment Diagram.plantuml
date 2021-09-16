@@ -1,0 +1,21 @@
+@startuml "Deployment Diagram"
+
+node MCU {
+    component "Power"
+    component "Movement"
+    component "TelecomandInterface"
+    component "Temperature"  
+}
+
+node OBC {
+    component "Navigation"
+}
+
+node EarthPC {
+    component "Interface"
+}
+
+MCU -- OBC
+EarthPC -- MCU
+
+@enduml
