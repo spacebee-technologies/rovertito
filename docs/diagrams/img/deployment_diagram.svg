@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="407px" preserveAspectRatio="none" style="width:677px;height:407px;background:#FFFFFF;" version="1.1" viewBox="0 0 677 407" width="677px" zoomAndPan="magnify"><defs><filter height="300%" id="fj3n3dpk0edrq" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[75db12bf3994149902b960656d5959b9]
+cluster MCU--><polygon fill="#FFFFFF" filter="url(#fj3n3dpk0edrq)" points="16,174,26,164,437,164,437,390,427,400,16,400,16,174" style="stroke:#000000;stroke-width:1.5;"/><line style="stroke:#000000;stroke-width:1.5;" x1="427" x2="437" y1="174" y2="164"/><line style="stroke:#000000;stroke-width:1.5;" x1="16" x2="427" y1="174" y2="174"/><line style="stroke:#000000;stroke-width:1.5;" x1="427" x2="427" y1="174" y2="400"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="35" x="205" y="189.9951">MCU</text><!--MD5=[df05e5818658ad338a237edc3e292e72]
+cluster OBC--><polygon fill="#FFFFFF" filter="url(#fj3n3dpk0edrq)" points="477,292,487,282,660,282,660,390,650,400,477,400,477,292" style="stroke:#000000;stroke-width:1.5;"/><line style="stroke:#000000;stroke-width:1.5;" x1="650" x2="660" y1="292" y2="282"/><line style="stroke:#000000;stroke-width:1.5;" x1="477" x2="650" y1="292" y2="292"/><line style="stroke:#000000;stroke-width:1.5;" x1="650" x2="650" y1="292" y2="400"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="33" x="548" y="307.9951">OBC</text><!--MD5=[8721daad5ce786cd6e1ab75e92e43566]
+cluster EarthPC--><polygon fill="#FFFFFF" filter="url(#fj3n3dpk0edrq)" points="421,16,431,6,594,6,594,114,584,124,421,124,421,16" style="stroke:#000000;stroke-width:1.5;"/><line style="stroke:#000000;stroke-width:1.5;" x1="584" x2="594" y1="16" y2="6"/><line style="stroke:#000000;stroke-width:1.5;" x1="421" x2="584" y1="16" y2="16"/><line style="stroke:#000000;stroke-width:1.5;" x1="584" x2="584" y1="16" y2="124"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="64" x="471.5" y="31.9951">EarthPC</text><!--MD5=[e54c24d81b58f597706b2988ab82eb59]
+entity Power--><rect fill="#FEFECE" filter="url(#fj3n3dpk0edrq)" height="46.2969" style="stroke:#A80036;stroke-width:1.5;" width="84" x="95" y="212"/><rect fill="#FEFECE" height="10" style="stroke:#A80036;stroke-width:1.5;" width="15" x="159" y="217"/><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1.5;" width="4" x="157" y="219"/><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1.5;" width="4" x="157" y="223"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="44" x="110" y="244.9951">Power</text><!--MD5=[a0d5f6d12c4740265c8b8d9dcaab88b3]
+entity Movement--><rect fill="#FEFECE" filter="url(#fj3n3dpk0edrq)" height="46.2969" style="stroke:#A80036;stroke-width:1.5;" width="117" x="214.5" y="212"/><rect fill="#FEFECE" height="10" style="stroke:#A80036;stroke-width:1.5;" width="15" x="311.5" y="217"/><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1.5;" width="4" x="309.5" y="219"/><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1.5;" width="4" x="309.5" y="223"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="77" x="229.5" y="244.9951">Movement</text><!--MD5=[620335a99a3acc7566b70c5a8928524a]
+entity TelecomandInterface--><rect fill="#FEFECE" filter="url(#fj3n3dpk0edrq)" height="46.2969" style="stroke:#A80036;stroke-width:1.5;" width="194" x="40" y="330"/><rect fill="#FEFECE" height="10" style="stroke:#A80036;stroke-width:1.5;" width="15" x="214" y="335"/><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1.5;" width="4" x="212" y="337"/><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1.5;" width="4" x="212" y="341"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="154" x="55" y="362.9951">TelecomandInterface</text><!--MD5=[d8bbeeacfb92c2472e49204dfd27e0d3]
+entity Temperature--><rect fill="#FEFECE" filter="url(#fj3n3dpk0edrq)" height="46.2969" style="stroke:#A80036;stroke-width:1.5;" width="135" x="269.5" y="330"/><rect fill="#FEFECE" height="10" style="stroke:#A80036;stroke-width:1.5;" width="15" x="384.5" y="335"/><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1.5;" width="4" x="382.5" y="337"/><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1.5;" width="4" x="382.5" y="341"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="95" x="284.5" y="362.9951">Temperature</text><!--MD5=[cf55b3edfd0bf013f73bab62788e64cb]
+entity Navigation--><rect fill="#FEFECE" filter="url(#fj3n3dpk0edrq)" height="46.2969" style="stroke:#A80036;stroke-width:1.5;" width="116" x="520" y="330"/><rect fill="#FEFECE" height="10" style="stroke:#A80036;stroke-width:1.5;" width="15" x="616" y="335"/><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1.5;" width="4" x="614" y="337"/><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1.5;" width="4" x="614" y="341"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="76" x="535" y="362.9951">Navigation</text><!--MD5=[01662713e0c01d293b5fbfc799a74846]
+entity Interface--><rect fill="#FEFECE" filter="url(#fj3n3dpk0edrq)" height="46.2969" style="stroke:#A80036;stroke-width:1.5;" width="106" x="464" y="54"/><rect fill="#FEFECE" height="10" style="stroke:#A80036;stroke-width:1.5;" width="15" x="550" y="59"/><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1.5;" width="4" x="548" y="61"/><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1.5;" width="4" x="548" y="65"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="66" x="479" y="86.9951">Interface</text><!--MD5=[58faaf5a8ed6a362506bd78b2c5440c4]
+link MCU to OBC--><path d="M437.0644,252.7043 C437.1415,252.864 437.219,253.0246 437.2969,253.186 C437.6086,253.8317 437.9269,254.491 438.2514,255.1632 C443.4437,265.9188 450.2274,279.9709 457.0104,294.0213 C463.7933,308.0717 470.5755,322.1205 475.7646,332.8694 C476.089,333.5412 476.4071,334.2001 476.7186,334.8453 C476.7964,335.0066 476.8739,335.1671 476.9509,335.3266 " fill="none" id="MCU-OBC" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[b430561eae19218b6d5ad55b81da2a68]
+link EarthPC to MCU--><path d="M429,124.1116 C429,124.3837 429,124.6565 429,124.9298 C429,126.0232 429,127.1264 429,128.2382 C429,137.1326 429,146.5808 429,156.0285 C429,158.3904 429,160.7523 429,163.1055 C429,163.3996 429,163.6937 429,163.9875 " fill="none" id="EarthPC-MCU" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[cee0d7df3cd4a75c6bc317b514db489d]
+link Power to Movement--><!--MD5=[5997eb31dd67a77cda185b77521463a9]
+link Power to TelecomandInterface--><!--MD5=[45d4e831c3bc858064b6f8356163342b]
+link TelecomandInterface to Temperature--><!--MD5=[40f0d21471faa8428598a73d8b37a0dc]
+@startuml
+node MCU {
+    component "Power"
+    component "Movement"
+    component "TelecomandInterface"
+    component "Temperature"  
+}
+
+node OBC {
+    component "Navigation"
+}
+
+node EarthPC {
+    component "Interface"
+}
+
+MCU - - OBC
+EarthPC - - MCU
+@enduml
+
+PlantUML version 1.2021.11beta6(Unknown compile time)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>
