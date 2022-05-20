@@ -1,5 +1,5 @@
-/*
- * Component description for XDMAC
+/**
+ * \brief Component description for XDMAC
  *
  * Copyright (c) 2021 Microchip Technology Inc. and its subsidiaries.
  *

@@ -1,5 +1,5 @@
-/*
- * Component description for TRNG
+/**
+ * \brief Component description for TRNG
  *
  * Copyright (c) 2021 Microchip Technology Inc. and its subsidiaries.
  *

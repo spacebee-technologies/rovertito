@@ -1,5 +1,5 @@
-/*
- * Component description for SPI
+/**
+ * \brief Component description for SPI
  *
  * Copyright (c) 2021 Microchip Technology Inc. and its subsidiaries.
  *

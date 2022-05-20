@@ -1,5 +1,5 @@
-/*
- * Component description for PIO
+/**
+ * \brief Component description for PIO
  *
  * Copyright (c) 2021 Microchip Technology Inc. and its subsidiaries.
  *

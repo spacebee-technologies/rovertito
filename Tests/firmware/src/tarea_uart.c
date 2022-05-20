@@ -1,10 +1,14 @@
 /*=============================================================================
  * Author: Spacebeetech - Navegación
- * Date: 16/05/2021 
+ * Date: 16/05/2022 
  * Board: Atmel ARM Cortex-M7 Xplained Ultra Dev Board ATSAMV71-XULT ATSAMV71Q21B
  * Entorno de programacion: MPLABX - Harmony
  *
  * Descripción: Tarea encargada de recibir los datos por uart y procesarlos
+ * Funcionamiento: TAREA_UART_Tasks al iniciarse configura el periferico uart como interrupcion cuando el buffer uart llega a x bytes previamente establecidos.
+ *                 Ademas el iniciarse esta tarea tambien crea un semaforo binario, este semaforo sirve para bloquear o habilitar la tarea dependiendo si hay datos en el buffer para leer o no.
+ *                 Luego de iniciar el semaforo y configurar la int de uart, se entra un bucle infinito. Dentro de este bucle se intenta tomar el semaforo, si el semaforo habilita, se leen los datos del buffer uart.
+ *                 en caso de que no haya dato en el buffer, el semaforo no estara habilitado por la interrupcion y por ende bloqueara la tarea TAREA_UART_Tasks hasta que llegue el dato uart permitiendo que otras tareas entren en contexto y ejecución.
  *===========================================================================*/
 
 /*=====================[ Inclusiones ]============================*/

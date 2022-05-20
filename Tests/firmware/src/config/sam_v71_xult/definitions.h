@@ -51,6 +51,7 @@
 #include "peripheral/clk/plib_clk.h"
 #include "peripheral/pio/plib_pio.h"
 #include "peripheral/nvic/plib_nvic.h"
+#include "peripheral/mcan/plib_mcan1.h"
 #include "peripheral/efc/plib_efc.h"
 #include "FreeRTOS.h"
 #include "task.h"

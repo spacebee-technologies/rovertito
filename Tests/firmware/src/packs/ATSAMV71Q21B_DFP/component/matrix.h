@@ -1,5 +1,5 @@
-/*
- * Component description for MATRIX
+/**
+ * \brief Component description for MATRIX
  *
  * Copyright (c) 2021 Microchip Technology Inc. and its subsidiaries.
  *

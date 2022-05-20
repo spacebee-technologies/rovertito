@@ -1,5 +1,5 @@
-/*
- * Component description for AES
+/**
+ * \brief Component description for AES
  *
  * Copyright (c) 2021 Microchip Technology Inc. and its subsidiaries.
  *

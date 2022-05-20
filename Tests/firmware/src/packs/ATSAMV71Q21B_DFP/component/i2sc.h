@@ -1,5 +1,5 @@
-/*
- * Component description for I2SC
+/**
+ * \brief Component description for I2SC
  *
  * Copyright (c) 2021 Microchip Technology Inc. and its subsidiaries.
  *

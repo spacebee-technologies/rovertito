@@ -1,5 +1,5 @@
-/*
- * Component description for RSWDT
+/**
+ * \brief Component description for RSWDT
  *
  * Copyright (c) 2021 Microchip Technology Inc. and its subsidiaries.
  *

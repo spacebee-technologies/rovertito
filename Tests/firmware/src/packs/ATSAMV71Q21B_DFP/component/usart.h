@@ -1,5 +1,5 @@
-/*
- * Component description for USART
+/**
+ * \brief Component description for USART
  *
  * Copyright (c) 2021 Microchip Technology Inc. and its subsidiaries.
  *

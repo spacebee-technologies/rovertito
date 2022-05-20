@@ -21,6 +21,10 @@
             <logicalFolder name="f2" displayName="efc" projectFiles="true">
               <itemPath>../src/config/sam_v71_xult/peripheral/efc/plib_efc.h</itemPath>
             </logicalFolder>
+            <logicalFolder name="f6" displayName="mcan" projectFiles="true">
+              <itemPath>../src/config/sam_v71_xult/peripheral/mcan/plib_mcan_common.h</itemPath>
+              <itemPath>../src/config/sam_v71_xult/peripheral/mcan/plib_mcan1.h</itemPath>
+            </logicalFolder>
             <logicalFolder name="f3" displayName="nvic" projectFiles="true">
               <itemPath>../src/config/sam_v71_xult/peripheral/nvic/plib_nvic.h</itemPath>
             </logicalFolder>
@@ -123,7 +127,6 @@
             <itemPath>../src/packs/ATSAMV71Q21B_DFP/component/utmi.h</itemPath>
             <itemPath>../src/packs/ATSAMV71Q21B_DFP/component/wdt.h</itemPath>
             <itemPath>../src/packs/ATSAMV71Q21B_DFP/component/xdmac.h</itemPath>
-            <itemPath>../src/packs/ATSAMV71Q21B_DFP/component/fuses.h</itemPath>
           </logicalFolder>
           <logicalFolder name="f3" displayName="instance" projectFiles="true">
             <itemPath>../src/packs/ATSAMV71Q21B_DFP/instance/acc.h</itemPath>
@@ -183,7 +186,6 @@
             <itemPath>../src/packs/ATSAMV71Q21B_DFP/instance/utmi.h</itemPath>
             <itemPath>../src/packs/ATSAMV71Q21B_DFP/instance/wdt.h</itemPath>
             <itemPath>../src/packs/ATSAMV71Q21B_DFP/instance/xdmac.h</itemPath>
-            <itemPath>../src/packs/ATSAMV71Q21B_DFP/instance/fuses.h</itemPath>
           </logicalFolder>
           <logicalFolder name="f2" displayName="pio" projectFiles="true">
             <itemPath>../src/packs/ATSAMV71Q21B_DFP/pio/samv71q21b.h</itemPath>
@@ -212,6 +214,7 @@
       <itemPath>../src/tarea_uart.h</itemPath>
       <itemPath>../src/tarea_2.h</itemPath>
       <itemPath>../src/tarea_principal.h</itemPath>
+      <itemPath>../src/mcan_fd_interrupt.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -239,6 +242,7 @@
         <itemPath>../src/config/sam_v71_xult/sam_v71_xult.mhc/FreeRTOS.yml</itemPath>
         <itemPath>../src/config/sam_v71_xult/sam_v71_xult.mhc/GraphSettings.yml</itemPath>
         <itemPath>../src/config/sam_v71_xult/sam_v71_xult.mhc/HarmonyCore.yml</itemPath>
+        <itemPath>../src/config/sam_v71_xult/sam_v71_xult.mhc/mcan1.yml</itemPath>
         <itemPath>../src/config/sam_v71_xult/sam_v71_xult.mhc/project.yml</itemPath>
         <itemPath>../src/config/sam_v71_xult/sam_v71_xult.mhc/settings.yml</itemPath>
         <itemPath>../src/config/sam_v71_xult/sam_v71_xult.mhc/usart1.yml</itemPath>
@@ -272,6 +276,9 @@
             </logicalFolder>
             <logicalFolder name="f2" displayName="efc" projectFiles="true">
               <itemPath>../src/config/sam_v71_xult/peripheral/efc/plib_efc.c</itemPath>
+            </logicalFolder>
+            <logicalFolder name="f6" displayName="mcan" projectFiles="true">
+              <itemPath>../src/config/sam_v71_xult/peripheral/mcan/plib_mcan1.c</itemPath>
             </logicalFolder>
             <logicalFolder name="f3" displayName="nvic" projectFiles="true">
               <itemPath>../src/config/sam_v71_xult/peripheral/nvic/plib_nvic.c</itemPath>
@@ -330,6 +337,7 @@
       <itemPath>../src/tarea_uart.c</itemPath>
       <itemPath>../src/tarea_2.c</itemPath>
       <itemPath>../src/tarea_principal.c</itemPath>
+      <itemPath>../src/mcan_fd_interrupt.c</itemPath>
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
@@ -349,7 +357,7 @@
         <platform>3</platform>
       </toolsSet>
       <packs>
-        <pack name="SAMV71_DFP" vendor="Microchip" version="4.4.78"/>
+        <pack name="SAMV71_DFP" vendor="Microchip" version="4.8.113"/>
         <pack name="CMSIS" vendor="ARM" version="5.4.0"/>
       </packs>
       <ScriptingSettings>

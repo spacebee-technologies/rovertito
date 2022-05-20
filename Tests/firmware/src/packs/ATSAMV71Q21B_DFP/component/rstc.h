@@ -1,5 +1,5 @@
-/*
- * Component description for RSTC
+/**
+ * \brief Component description for RSTC
  *
  * Copyright (c) 2021 Microchip Technology Inc. and its subsidiaries.
  *

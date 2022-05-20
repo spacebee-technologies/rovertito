@@ -1,5 +1,5 @@
-/*
- * Component description for UTMI
+/**
+ * \brief Component description for UTMI
  *
  * Copyright (c) 2021 Microchip Technology Inc. and its subsidiaries.
  *

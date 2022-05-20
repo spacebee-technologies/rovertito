@@ -1,5 +1,5 @@
-/*
- * Component description for MLB
+/**
+ * \brief Component description for MLB
  *
  * Copyright (c) 2021 Microchip Technology Inc. and its subsidiaries.
  *

@@ -1,5 +1,5 @@
-/*
- * Component description for ACC
+/**
+ * \brief Component description for ACC
  *
  * Copyright (c) 2021 Microchip Technology Inc. and its subsidiaries.
  *

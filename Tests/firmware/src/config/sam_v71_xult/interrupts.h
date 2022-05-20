@@ -50,6 +50,7 @@
 #include <stdint.h>
 
 
+
 // *****************************************************************************
 // *****************************************************************************
 // Section: Handler Routines
@@ -62,6 +63,7 @@ void HardFault_Handler (void);
 void xPortSysTickHandler (void);
 void PIOA_InterruptHandler (void);
 void USART1_InterruptHandler (void);
+void MCAN1_INT0_InterruptHandler (void);
 
 
 

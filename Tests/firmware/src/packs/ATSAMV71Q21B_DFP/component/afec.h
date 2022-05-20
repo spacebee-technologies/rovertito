@@ -1,5 +1,5 @@
-/*
- * Component description for AFEC
+/**
+ * \brief Component description for AFEC
  *
  * Copyright (c) 2021 Microchip Technology Inc. and its subsidiaries.
  *
