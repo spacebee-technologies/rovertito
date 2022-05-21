@@ -88,21 +88,22 @@ void mcan_fd_interrupt_config(uint8_t *msgRAMConfigBaseAddress){
   Funcion: mcan_fd_interrupt_enviar
   Descripcion: Envia mensaje por canbus
   Parametro de entrada:
-                        uint32_t messageID:  Id can a donde enviar el mensaje de 11 bits/29 bits.
-                        uint8_t *message:    Puntero del mensaje a enviar
-                        MCAN_MODE MCAN_MODE: Modo de operacion can
-                                             Mensajes FD (can FD) hata 64 bytes:                   MCAN_MODE_FD_WITH_BRS
-                                             Mensajes estandar normal (can clasico) hasta 8 bytes: MCAN_MODE_NORMAL
-                        MCAN_MSG_ATTR_TX:    Trama de datos o trama remota usando Tx FIFO o Tx Buffer.
-                                             MCAN_MSG_ATTR_TX_FIFO_DATA_FRAME
+                        uint32_t messageID:     Id can a donde enviar el mensaje de 11 bits/29 bits.
+                        uint8_t *message:       Puntero del mensaje a enviar
+                        uint8_t messageLength:  Tamaño del arreglo a enviar
+                        MCAN_MODE MCAN_MODE:    Modo de operacion can
+                                                Mensajes FD (can FD) hata 64 bytes:                   MCAN_MODE_FD_WITH_BRS
+                                                Mensajes estandar normal (can clasico) hasta 8 bytes: MCAN_MODE_NORMAL
+                        MCAN_MSG_ATTR_TX:       Trama de datos o trama remota usando Tx FIFO o Tx Buffer.
+                                                MCAN_MSG_ATTR_TX_FIFO_DATA_FRAME
   Retorna: dato bool indicando si se pudo transmitir el mensaje true o false.
   ========================================================================*/
-bool mcan_fd_interrupt_enviar(uint32_t messageID , uint8_t *message, MCAN_MODE MCAN_MODE, MCAN_MSG_TX_ATTRIBUTE MCAN_MSG_ATTR_TX){
+bool mcan_fd_interrupt_enviar(uint32_t messageID , uint8_t *message, uint8_t messageLength, MCAN_MODE MCAN_MODE, MCAN_MSG_TX_ATTRIBUTE MCAN_MSG_ATTR_TX){
     if (state == APP_STATE_MCAN_USER_INPUT)                                                     //Si se esta esperando al usuario para enviar o recibir mensaje
         {           
             MCAN1_TxCallbackRegister( APP_MCAN_Callback, (uintptr_t)APP_STATE_MCAN_TRANSMIT );  //Establece el puntero a la función (y su contexto) que se llamará cuando ocurran los eventos de transferencia del MCAN dado. Previamente se debe haber llamado a MCAN1_Initialize para la instancia de MCAN asociada.
             state = APP_STATE_MCAN_IDLE;                                                        //Establezco el estado en estado mcan inactivo    
-            bool Resultado = MCAN1_MessageTransmit(messageID, sizeof(message), message, MCAN_MODE, MCAN_MSG_ATTR_TX); //Transmite un mensaje al bus CAN. Previamente se debe haber llamado a MCAN1_Initialize para la instancia de MCAN asociada.
+            bool Resultado = MCAN1_MessageTransmit(messageID, messageLength, message, MCAN_MODE, MCAN_MSG_ATTR_TX); //Transmite un mensaje al bus CAN. Previamente se debe haber llamado a MCAN1_Initialize para la instancia de MCAN asociada.
             return Resultado;                                                                   //Retorno resultado. True si se puedo trasmitir o false si no se puedo transmitir.
         }
     return false;                                                                              //Retorno falso si no se esperaba al usuario para enviar o recibir mensaje
