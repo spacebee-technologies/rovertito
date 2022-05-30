@@ -114,7 +114,7 @@ bool mcan_fd_interrupt_enviar(uint32_t messageID , uint8_t *message, uint8_t mes
   Funcion: mcan_fd_interrupt_recibir
   Descripcion: Recibe mensaje por canbus
   Parametro de entrada:
-                        uint32_t *rx_messageID:     Id can del mensaje a recibir (de 11 bits/29 bits).
+                        uint32_t *rx_messageID:     Id can del mensaje recibido (de 11 bits/29 bits).
                         uint8_t *rx_message:        Puntero de la variable donde guardar el mensaje
                         uint8_t *rx_messageLength:  Puntero de la variable donde guardar el tamaño del mensaje
                         uint16_t *timestamp:        Puntero a la marca de tiempo del mensaje Rx, el valor de la marca de tiempo es 0 si la marca de tiempo está deshabilitada
@@ -137,7 +137,6 @@ bool mcan_fd_interrupt_recibir(uint32_t *rx_messageID, uint8_t *rx_message, uint
         }
     return false;                                                                                              //Retorno falso si no se esperaba al usuario para enviar o recibir mensaje
 }
-
 
 /*========================================================================
   Funcion: Resultado

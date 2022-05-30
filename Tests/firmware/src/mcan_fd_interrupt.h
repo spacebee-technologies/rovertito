@@ -33,7 +33,14 @@
 
 
 /*=====================[Variables]================================*/
-
+typedef enum
+    {
+        CAN_LIBRE,               //No se esta esperando una transmision o recepcion
+        CAN_RECEPCION_OK,        //Se recibio correctamente un dato por can bus luego de llamar a la funcion mcan_fd_interrupt_recibir()
+        CAN_TRANSMICION_OK,      //Se transmitio correctamente un dato por can bus luego de llamar a la funcion mcan_fd_interrupt_enviar()
+        CAN_RECEPCION_ERROR,     //Error al recibir un dato por can bus luego de llamar a la funcion mcan_fd_interrupt_recibir()
+        CAN_TRANSMICION_ERROR,   //Error al transmitir un dato por can bus luego de llamar a la funcion mcan_fd_interrupt_enviar()
+    } CAN_ESTADO;                //Enumaracion de los estados posibles
 
 //DOM-IGNORE-BEGIN
 #ifdef __cplusplus
