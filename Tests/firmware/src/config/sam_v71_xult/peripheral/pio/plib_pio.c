@@ -67,7 +67,7 @@ void PIO_Initialize ( void )
 {
     MATRIX_REGS->CCFG_SYSIO = 0x0;
     /* Selected System IO pins are configured as GPIO */
-    MATRIX_REGS->CCFG_SYSIO |= 0x1010;
+    MATRIX_REGS->CCFG_SYSIO |= 0x10;
 
     /************************ PIO A Initialization ************************/
     /* PORTA PIO Disable and Peripheral Enable*/
@@ -81,8 +81,8 @@ void PIO_Initialize ( void )
     /* PORTA Output Write Enable */
     ((pio_registers_t*)PIO_PORT_A)->PIO_OWER = PIO_OWER_Msk;
     /* PORTA Output Direction Enable */
-    ((pio_registers_t*)PIO_PORT_A)->PIO_OER = 0x800000;
-    ((pio_registers_t*)PIO_PORT_A)->PIO_ODR = ~0x800000;
+    ((pio_registers_t*)PIO_PORT_A)->PIO_OER = 0x0;
+    ((pio_registers_t*)PIO_PORT_A)->PIO_ODR = ~0x0;
     /* PORTA Initial state High */
     ((pio_registers_t*)PIO_PORT_A)->PIO_ODSR = 0x0;
     /* PORTA Additional interrupt mode Enable */
@@ -120,7 +120,12 @@ void PIO_Initialize ( void )
     ((pio_registers_t*)PIO_PORT_B)->PIO_DRIVER = 0x0;
 
     /************************ PIO C Initialization ************************/
-    ((pio_registers_t*)PIO_PORT_C)->PIO_PER = 0xFFFFFFFF;
+    /* PORTC Peripheral Function Selection */
+    ((pio_registers_t*)PIO_PORT_C)->PIO_ABCDSR[0]= 0x0;
+    ((pio_registers_t*)PIO_PORT_C)->PIO_ABCDSR[1]= 0x5000;
+    /* PORTC PIO Disable and Peripheral Enable*/
+    ((pio_registers_t*)PIO_PORT_C)->PIO_PDR = 0x5000;
+    ((pio_registers_t*)PIO_PORT_C)->PIO_PER = ~0x5000;
     ((pio_registers_t*)PIO_PORT_C)->PIO_MDDR = 0xFFFFFFFF;
     /* PORTC Pull Up Enable/Disable as per MHC selection */
     ((pio_registers_t*)PIO_PORT_C)->PIO_PUDR = 0xFFFFFFFF;
@@ -129,8 +134,8 @@ void PIO_Initialize ( void )
     /* PORTC Output Write Enable */
     ((pio_registers_t*)PIO_PORT_C)->PIO_OWER = PIO_OWER_Msk;
     /* PORTC Output Direction Enable */
-    ((pio_registers_t*)PIO_PORT_C)->PIO_OER = 0x10200;
-    ((pio_registers_t*)PIO_PORT_C)->PIO_ODR = ~0x10200;
+    ((pio_registers_t*)PIO_PORT_C)->PIO_OER = 0x0;
+    ((pio_registers_t*)PIO_PORT_C)->PIO_ODR = ~0x0;
     /* PORTC Initial state High */
     ((pio_registers_t*)PIO_PORT_C)->PIO_ODSR = 0x0;
     /* PORTC drive control */

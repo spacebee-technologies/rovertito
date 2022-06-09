@@ -11,6 +11,7 @@
   #include "tarea_principal.h"
   #include "definitions.h"
   #include <string.h>
+  #include <stdio.h>
   #include "mcan_fd_interrupt.h"
 
 /*=====================[Variables]================================*/
@@ -34,7 +35,9 @@
   void TAREA_Can(void *pvParameters );
   void TAREA_Can1(void *pvParameters );
   void TAREA_Can2(void *pvParameters );
+
 /*=====================[Implementaciones]==============================*/
+
 
 /*========================================================================
   Funcion: TAREA_PRINCIPAL_Initialize
@@ -123,6 +126,7 @@ void TAREA_PRINCIPAL_Tasks ( void )
     }
 }
 
+
 /*========================================================================
   Funcion: TAREA_Can1
   Descripcion: Envio la trama 1 por canbus
@@ -153,7 +157,7 @@ void TAREA_Can1(void *pvParameters ){
 void TAREA_Can2(void *pvParameters ){
   xSemaphoreTake(canMutexLock, portMAX_DELAY);                         //Tomo semaforo para proteger el bus can ya que es un recurso compartico con otras tareas
   static uint8_t message[64] = {0};
-  message[0]='R'; message[1]='o'; message[2]='v'; message[3]='e'; message[4]='r';
+  message[0]='R'; message[1]='o'; message[2]='v'; message[3]='e'; message[4]='r'; message[5]='r';
   bool retorno = mcan_fd_interrupt_enviar((uint32_t) 0x469, message, 8, MCAN_MODE_NORMAL, MCAN_MSG_ATTR_TX_FIFO_DATA_FRAME); //Envio trama por can bus
   
   if ( retorno == false)
@@ -234,6 +238,7 @@ void TAREA_Can(void *pvParameters ){
         default:                                                                
             break;
     }
+    vTaskDelay(1500 / portTICK_PERIOD_MS );                   //Deje que la tarea quede inactiva por un tiempo determinado dejando que se produzca el cambio de contexto a otra tarea.
   }
   if(xTAREA_Can != NULL){vTaskDelete(xTAREA_Can); xTAREA_Can=NULL;} //Elimino esta tarea
 }

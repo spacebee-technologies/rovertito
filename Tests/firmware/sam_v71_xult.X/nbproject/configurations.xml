@@ -6,9 +6,6 @@
                    projectFiles="true">
       <logicalFolder name="f1" displayName="config" projectFiles="true">
         <logicalFolder name="f1" displayName="sam_v71_xult" projectFiles="true">
-          <logicalFolder name="f1" displayName="bsp" projectFiles="true">
-            <itemPath>../src/config/sam_v71_xult/bsp/bsp.h</itemPath>
-          </logicalFolder>
           <logicalFolder name="f2" displayName="osal" projectFiles="true">
             <itemPath>../src/config/sam_v71_xult/osal/osal.h</itemPath>
             <itemPath>../src/config/sam_v71_xult/osal/osal_definitions.h</itemPath>
@@ -24,6 +21,10 @@
             <logicalFolder name="f6" displayName="mcan" projectFiles="true">
               <itemPath>../src/config/sam_v71_xult/peripheral/mcan/plib_mcan_common.h</itemPath>
               <itemPath>../src/config/sam_v71_xult/peripheral/mcan/plib_mcan1.h</itemPath>
+            </logicalFolder>
+            <logicalFolder name="f7" displayName="mpu" projectFiles="true">
+              <itemPath>../src/config/sam_v71_xult/peripheral/mpu/plib_mpu.h</itemPath>
+              <itemPath>../src/config/sam_v71_xult/peripheral/mpu/plib_mpu_local.h</itemPath>
             </logicalFolder>
             <logicalFolder name="f3" displayName="nvic" projectFiles="true">
               <itemPath>../src/config/sam_v71_xult/peripheral/nvic/plib_nvic.h</itemPath>
@@ -234,7 +235,6 @@
         <itemPath>../../../../../../../../../../../Nube/OneDrive - UTN San Francisco/nube/nube/trabajos/SpaceBee/Codigo/ATSAMV71Q21B/firmware/src/config/default/default.mhc/usart1.yml</itemPath>
       </logicalFolder>
       <logicalFolder name="f1" displayName="sam_v71_xult.mhc" projectFiles="true">
-        <itemPath>../src/config/sam_v71_xult/sam_v71_xult.mhc/BSP_SAM_V71_Xplained_Ultra.yml</itemPath>
         <itemPath>../src/config/sam_v71_xult/sam_v71_xult.mhc/cmsis.yml</itemPath>
         <itemPath>../src/config/sam_v71_xult/sam_v71_xult.mhc/core.yml</itemPath>
         <itemPath>../src/config/sam_v71_xult/sam_v71_xult.mhc/dfp.yml</itemPath>
@@ -264,9 +264,6 @@
                    projectFiles="true">
       <logicalFolder name="f1" displayName="config" projectFiles="true">
         <logicalFolder name="f1" displayName="sam_v71_xult" projectFiles="true">
-          <logicalFolder name="f1" displayName="bsp" projectFiles="true">
-            <itemPath>../src/config/sam_v71_xult/bsp/bsp.c</itemPath>
-          </logicalFolder>
           <logicalFolder name="f2" displayName="osal" projectFiles="true">
             <itemPath>../src/config/sam_v71_xult/osal/osal_freertos.c</itemPath>
           </logicalFolder>
@@ -279,6 +276,9 @@
             </logicalFolder>
             <logicalFolder name="f6" displayName="mcan" projectFiles="true">
               <itemPath>../src/config/sam_v71_xult/peripheral/mcan/plib_mcan1.c</itemPath>
+            </logicalFolder>
+            <logicalFolder name="f7" displayName="mpu" projectFiles="true">
+              <itemPath>../src/config/sam_v71_xult/peripheral/mpu/plib_mpu.c</itemPath>
             </logicalFolder>
             <logicalFolder name="f3" displayName="nvic" projectFiles="true">
               <itemPath>../src/config/sam_v71_xult/peripheral/nvic/plib_nvic.c</itemPath>
@@ -357,8 +357,8 @@
         <platform>3</platform>
       </toolsSet>
       <packs>
-        <pack name="SAMV71_DFP" vendor="Microchip" version="4.8.113"/>
         <pack name="CMSIS" vendor="ARM" version="5.4.0"/>
+        <pack name="SAMV71_DFP" vendor="Microchip" version="4.8.113"/>
       </packs>
       <ScriptingSettings>
       </ScriptingSettings>
@@ -438,6 +438,7 @@
         <property key="use-cci" value="false"/>
         <property key="use-iar" value="false"/>
         <property key="use-indirect-calls" value="false"/>
+        <appendMe value="-Wformat=2 -Werror-implicit-function-declaration -Wfloat-equal -Wundef -Wshadow -Wpointer-arith -Wbad-function-cast -Wwrite-strings -Waggregate-return -Wstrict-prototypes -Wmissing-format-attribute -Wno-deprecated-declarations -Wpacked -Wredundant-decls -Wnested-externs -Winline -Wlong-long -Wunreachable-code"/>
       </C32>
       <C32-AR>
         <property key="additional-options-chop-files" value="false"/>

@@ -77,6 +77,16 @@ ENTRY(__XC32_RESET_HANDLER_NAME)
 #elif (RAM_LENGTH > 0x60000)
 #  error RAM_LENGTH is greater than the max size of 0x60000
 #endif
+
+#ifndef SRAM_NOCACHE
+# define SRAM_NOCACHE 0x2045F000
+#endif
+#ifndef SRAM_NOCACHE_LENGTH
+# define SRAM_NOCACHE_LENGTH 0x00001000
+#elif (SRAM_NOCACHE_LENGTH > 0x60000)
+# error SRAM_NOCACHE_LENGTH is greater than the max size of 0x60000
+#endif
+
   
 #ifndef ITCM_ORIGIN
 #  define ITCM_ORIGIN 0x0
@@ -110,6 +120,7 @@ MEMORY
 {
   rom (LRX) : ORIGIN = ROM_ORIGIN, LENGTH = ROM_LENGTH
   ram (WX!R) : ORIGIN = RAM_ORIGIN, LENGTH = RAM_LENGTH-__XC32_ITCM_LENGTH-__XC32_DTCM_LENGTH
+  ram_nocache (RWX) : ORIGIN = SRAM_NOCACHE, LENGTH = SRAM_NOCACHE_LENGTH
   itcm (WX) : ORIGIN = ITCM_ORIGIN, LENGTH = __XC32_ITCM_LENGTH
   dtcm (WX!R) : ORIGIN = DTCM_ORIGIN, LENGTH = __XC32_DTCM_LENGTH
   config_D0000000 : ORIGIN = 0xD0000000, LENGTH = 0x4
@@ -183,6 +194,25 @@ SECTIONS
         KEEP(*(.reset*))
         KEEP(*(.after_vectors))
     } > VECTOR_REGION
+
+     .ram_nocache (NOLOAD):
+     {
+        . = ALIGN(4);
+        _s_ram_nocache = .;
+        *(.ram_nocache)
+        . = ALIGN(4);
+        _e_ram_nocache = .;
+     } > ram_nocache
+     
+     .ram_nocache_data : AT (_etext)
+     {
+        . = ALIGN(4);
+        _s_ram_nocache_vma = .;
+        _s_ram_nocache_lma = LOADADDR(.ram_nocache_data);
+        *(.ram_nocache_data)
+        . = ALIGN(4);
+        _e_ram_nocache_vma = .;
+     } > ram_nocache
     /*
      * Code Sections - Note that standard input sections such as
      * *(.text), *(.text.*), *(.rodata), & *(.rodata.*)

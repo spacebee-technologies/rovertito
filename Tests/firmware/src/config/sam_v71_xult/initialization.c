@@ -126,7 +126,6 @@ void SYS_Initialize ( void* data )
 
     USART1_Initialize();
 
-	BSP_Initialize();
 
 
 

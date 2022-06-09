@@ -6,13 +6,6 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: F58DB2348A0FCE945652B285010E5F8A
-- generatedChecksum: 53EB6F0C743BC190421592EBEE933F96
-  logicalPath: config/sam_v71_xult/bsp
-  name: bsp.c
-  physicalPath: bsp
-  security: NON_SECURE
-  type: SOURCE
-  userChecksum: 53EB6F0C743BC190421592EBEE933F96
 - generatedChecksum: 8ACE0DEBD82F6829438A4674565451FB
   logicalPath: FreeRTOS/Source
   name: croutine.c
@@ -48,13 +41,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 972E955D94A63BA89BF6ABD6AADB1023
-- generatedChecksum: 2034A92F90ADAB47CBCF2B7B42A4BBD5
+- generatedChecksum: C2130F508BAB1BA706E2B6B08EF147FA
   logicalPath: config/sam_v71_xult
   name: initialization.c
   physicalPath: ''
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 2034A92F90ADAB47CBCF2B7B42A4BBD5
+  userChecksum: C2130F508BAB1BA706E2B6B08EF147FA
 - generatedChecksum: 0E346F09376CE138D389E71B029A480D
   logicalPath: config/sam_v71_xult
   name: interrupts.c
@@ -111,6 +104,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 10DD91FE67D3307DB2F9E1BCAFBB52FA
+- generatedChecksum: EA134993E54F167800DC6F085C051770
+  logicalPath: config/sam_v71_xult/peripheral/mpu
+  name: plib_mpu.c
+  physicalPath: peripheral/mpu
+  security: NON_SECURE
+  type: SOURCE
+  userChecksum: EA134993E54F167800DC6F085C051770
 - generatedChecksum: 539806C1B1916171293D7B80694D5695
   logicalPath: config/sam_v71_xult/peripheral/nvic
   name: plib_nvic.c
@@ -118,13 +118,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 539806C1B1916171293D7B80694D5695
-- generatedChecksum: 45B8D1C7C6063C79B0A75CD71869A55B
+- generatedChecksum: CAB89E573548E5C3D702F45ACCB770DE
   logicalPath: config/sam_v71_xult/peripheral/pio
   name: plib_pio.c
   physicalPath: peripheral/pio
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 45B8D1C7C6063C79B0A75CD71869A55B
+  userChecksum: CAB89E573548E5C3D702F45ACCB770DE
 - generatedChecksum: 8260BDF7462647D5AE266834966D55C3
   logicalPath: config/sam_v71_xult/peripheral/usart
   name: plib_usart1.c
@@ -146,13 +146,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 09041728D74A4E3A32C7D4EAA96C4EE7
-- generatedChecksum: 3A35F794BD3C19E7B3142ED6806E4EFE
+- generatedChecksum: F199C711F99DEF2498D1F664873F2B12
   logicalPath: config/sam_v71_xult
   name: startup_xc32.c
   physicalPath: ''
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 3A35F794BD3C19E7B3142ED6806E4EFE
+  userChecksum: F199C711F99DEF2498D1F664873F2B12
 - generatedChecksum: D6CF30BDCE1A813D9ACF3905EBD6A871
   logicalPath: FreeRTOS/Source
   name: stream_buffer.c
@@ -223,13 +223,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: AF3A8D8AA610E7DFD3E38DDAC5E42074
-- generatedChecksum: 85814EC29A5445EBC540EAE6D59ECBDA
+- generatedChecksum: F5C56678B48F657CEF41DE4084704837
   logicalPath: config/sam_v71_xult
   name: FreeRTOSConfig.h
   physicalPath: ''
   security: NON_SECURE
   type: HEADER
-  userChecksum: 85814EC29A5445EBC540EAE6D59ECBDA
+  userChecksum: F5C56678B48F657CEF41DE4084704837
 - generatedChecksum: 94FC3809D12A61EE4762419AD9133BFD
   logicalPath: packs/ATSAMV71Q21B_DFP/component
   name: acc.h
@@ -279,13 +279,6 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: B55B1359C320343F04E042ACFD1FDE49
-- generatedChecksum: 317A17760B59DAC71932C5A5B72BD02B
-  logicalPath: config/sam_v71_xult/bsp
-  name: bsp.h
-  physicalPath: bsp
-  security: NON_SECURE
-  type: HEADER
-  userChecksum: 317A17760B59DAC71932C5A5B72BD02B
 - generatedChecksum: 01B82424BC59A54620F7E9E0DB808EBB
   logicalPath: packs/CMSIS/CMSIS/Core/Include
   name: cachel1_armv7.h
@@ -391,13 +384,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 4C770ED3B4760225F01F9A68FACF5692
-- generatedChecksum: 44EE5EB64483B30FEDE0B262394DD43A
+- generatedChecksum: 1C869E5DF48242E2D4511DF18F3971A0
   logicalPath: config/sam_v71_xult
   name: definitions.h
   physicalPath: ''
   security: NON_SECURE
   type: HEADER
-  userChecksum: 44EE5EB64483B30FEDE0B262394DD43A
+  userChecksum: 1C869E5DF48242E2D4511DF18F3971A0
 - generatedChecksum: 1EA4EDD5EA90F43EC407DE32441159A9
   logicalPath: FreeRTOS/Source/include
   name: deprecated_definitions.h
@@ -720,6 +713,20 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 7B723EB9002B172891E025F48548FF3E
+- generatedChecksum: 6736D89FF27ACC5342105A1FCB2C5B13
+  logicalPath: config/sam_v71_xult/peripheral/mpu
+  name: plib_mpu.h
+  physicalPath: peripheral/mpu
+  security: NON_SECURE
+  type: HEADER
+  userChecksum: 6736D89FF27ACC5342105A1FCB2C5B13
+- generatedChecksum: E13B3C3F2096A36698DDC9B5BDE2E776
+  logicalPath: config/sam_v71_xult/peripheral/mpu
+  name: plib_mpu_local.h
+  physicalPath: peripheral/mpu
+  security: NON_SECURE
+  type: HEADER
+  userChecksum: E13B3C3F2096A36698DDC9B5BDE2E776
 - generatedChecksum: 55ECCC7FA71BD15B46EF80DC0515ED7A
   logicalPath: config/sam_v71_xult/peripheral/nvic
   name: plib_nvic.h
@@ -1272,7 +1279,7 @@ files:
   physicalPath: ''
   security: NON_SECURE
   type: LINKER
-  userChecksum: DDE530F5FFFFC697AECE28B77488C234
+  userChecksum: 1768E24DF1A0931CFBBC7EDB0C69A9A0
 format_version: v1.0
 libraries: []
 settings:

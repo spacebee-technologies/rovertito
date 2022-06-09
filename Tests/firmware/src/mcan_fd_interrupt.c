@@ -98,12 +98,12 @@ void mcan_fd_interrupt_config(uint8_t *msgRAMConfigBaseAddress){
                                                 MCAN_MSG_ATTR_TX_FIFO_DATA_FRAME
   Retorna: dato bool indicando si se pudo transmitir el mensaje true o false.
   ========================================================================*/
-bool mcan_fd_interrupt_enviar(uint32_t messageID , uint8_t *message, uint8_t messageLength, MCAN_MODE MCAN_MODE, MCAN_MSG_TX_ATTRIBUTE MCAN_MSG_ATTR_TX){
+bool mcan_fd_interrupt_enviar(uint32_t messageID , uint8_t *message, uint8_t messageLength, MCAN_MODE MCAN_MODE_L, MCAN_MSG_TX_ATTRIBUTE MCAN_MSG_ATTR_TX){
     if (state == APP_STATE_MCAN_USER_INPUT)                                                     //Si se esta esperando al usuario para enviar o recibir mensaje
         {           
             MCAN1_TxCallbackRegister( APP_MCAN_Callback, (uintptr_t)APP_STATE_MCAN_TRANSMIT );  //Establece el puntero a la función (y su contexto) que se llamará cuando ocurran los eventos de transferencia del MCAN dado. Previamente se debe haber llamado a MCAN1_Initialize para la instancia de MCAN asociada.
             state = APP_STATE_MCAN_IDLE;                                                        //Establezco el estado en estado mcan inactivo    
-            bool Resultado = MCAN1_MessageTransmit(messageID, messageLength, message, MCAN_MODE, MCAN_MSG_ATTR_TX); //Transmite un mensaje al bus CAN. Previamente se debe haber llamado a MCAN1_Initialize para la instancia de MCAN asociada.
+            bool Resultado = MCAN1_MessageTransmit(messageID, messageLength, message, MCAN_MODE_L, MCAN_MSG_ATTR_TX); //Transmite un mensaje al bus CAN. Previamente se debe haber llamado a MCAN1_Initialize para la instancia de MCAN asociada.
             return Resultado;                                                                   //Retorno resultado. True si se puedo trasmitir o false si no se puedo transmitir.
         }
     return false;                                                                              //Retorno falso si no se esperaba al usuario para enviar o recibir mensaje
@@ -151,7 +151,7 @@ bool mcan_fd_interrupt_recibir(uint32_t *rx_messageID, uint8_t *rx_message, uint
                         3 = Error al recibir un dato por can bus luego de llamar a la funcion mcan_fd_interrupt_recibir()
                         4 = Error al transmitir un dato por can bus luego de llamar a la funcion mcan_fd_interrupt_enviar()
   ========================================================================*/
-uint8_t Resultado(){
+uint8_t Resultado(void){
     uint8_t resultado=0;                                                        //Variable para retornar
     switch (state)
     {
@@ -193,6 +193,6 @@ uint8_t Resultado(){
   Sin parameto de entrada.
   No retorna nada
   ========================================================================*/
-void mcan_fd_interrupt_habilitar(){
+void mcan_fd_interrupt_habilitar(void){
     state = APP_STATE_MCAN_USER_INPUT;
 }

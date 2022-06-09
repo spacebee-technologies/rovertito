@@ -63,6 +63,7 @@ void TAREA_PRINCIPAL_Initialize ( void )
     }
 }
 
+
 /*========================================================================
   Funcion: TAREA_PRINCIPAL_Tasks
   Descripcion: Tarea para interpretar dato recibido por uart y enviar trama can
