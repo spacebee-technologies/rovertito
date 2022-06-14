@@ -33,7 +33,7 @@ files:
   physicalPath: ''
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 5157CF110D22DBB1ACEEF944B1CF28A3
+  userChecksum: B7DBFD6F500AAD4713403E985EB18EAE
 - generatedChecksum: 972E955D94A63BA89BF6ABD6AADB1023
   logicalPath: FreeRTOS/Source/portable/MemMang
   name: heap_1.c
@@ -41,13 +41,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 972E955D94A63BA89BF6ABD6AADB1023
-- generatedChecksum: 09B13AAAA261B29C2AB50CDA260BCEC5
+- generatedChecksum: E9881E19A962E0969F2EEA8790CFD149
   logicalPath: config/sam_v71_xult
   name: initialization.c
   physicalPath: ''
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 09B13AAAA261B29C2AB50CDA260BCEC5
+  userChecksum: E9881E19A962E0969F2EEA8790CFD149
 - generatedChecksum: D9DF8D60D11346550EB399290C266370
   logicalPath: config/sam_v71_xult
   name: interrupts.c
@@ -176,32 +176,18 @@ files:
   userChecksum: 02C3C1B519E59992810626BB6098CF56
 - generatedChecksum: null
   logicalPath: ''
-  name: tarea2.c
-  physicalPath: ../..
-  security: NON_SECURE
-  type: SOURCE
-  userChecksum: null
-- generatedChecksum: null
-  logicalPath: ''
   name: tarea_principal.c
   physicalPath: ../..
   security: NON_SECURE
   type: SOURCE
   userChecksum: null
-- generatedChecksum: null
-  logicalPath: ''
-  name: tarea_uart.c
-  physicalPath: ../..
-  security: NON_SECURE
-  type: SOURCE
-  userChecksum: null
-- generatedChecksum: 9C0B0A6C86B992F336DDFD87A5BAB63A
+- generatedChecksum: C08FD718A703748380B18F4FAC275A6F
   logicalPath: config/sam_v71_xult
   name: tasks.c
   physicalPath: ''
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 9C0B0A6C86B992F336DDFD87A5BAB63A
+  userChecksum: C08FD718A703748380B18F4FAC275A6F
 - generatedChecksum: F1B86F6E1527FD59A8713B67564F2898
   logicalPath: FreeRTOS/Source
   name: timers.c
@@ -384,13 +370,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 4C770ED3B4760225F01F9A68FACF5692
-- generatedChecksum: D5C0AE983E2D7D852CC91133BE527256
+- generatedChecksum: C97FCA0C01EC89F8BFE3FB5002A96D1E
   logicalPath: config/sam_v71_xult
   name: definitions.h
   physicalPath: ''
   security: NON_SECURE
   type: HEADER
-  userChecksum: D5C0AE983E2D7D852CC91133BE527256
+  userChecksum: C97FCA0C01EC89F8BFE3FB5002A96D1E
 - generatedChecksum: 1EA4EDD5EA90F43EC407DE32441159A9
   logicalPath: FreeRTOS/Source/include
   name: deprecated_definitions.h
@@ -1023,21 +1009,7 @@ files:
   userChecksum: 00278F169FFB0CBBAB3A68B5D647F093
 - generatedChecksum: null
   logicalPath: ''
-  name: tarea2.h
-  physicalPath: ../..
-  security: NON_SECURE
-  type: HEADER
-  userChecksum: null
-- generatedChecksum: null
-  logicalPath: ''
   name: tarea_principal.h
-  physicalPath: ../..
-  security: NON_SECURE
-  type: HEADER
-  userChecksum: null
-- generatedChecksum: null
-  logicalPath: ''
-  name: tarea_uart.h
   physicalPath: ../..
   security: NON_SECURE
   type: HEADER

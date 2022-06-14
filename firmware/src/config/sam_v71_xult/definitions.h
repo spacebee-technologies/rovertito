@@ -61,8 +61,6 @@
 #include "system/cache/sys_cache.h"
 #include "osal/osal.h"
 #include "tarea_principal.h"
-#include "tarea2.h"
-#include "tarea_uart.h"
 
 
 

@@ -420,4 +420,4 @@ children:
       - type: User
         attributes: {value: '7'}
 - type: ElementPosition
-  attributes: {x: '624', y: '21', id: mcan1}
+  attributes: {x: '622', y: '18', id: mcan1}

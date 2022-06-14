@@ -14,6 +14,8 @@
             <make-dep-projects/>
             <sourceRootList>
                 <sourceRootElem>../src</sourceRootElem>
+                <sourceRootElem>../lib</sourceRootElem>
+                <sourceRootElem>../lib/mcan_fd_interrupt</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>

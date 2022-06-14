@@ -1,5 +1,5 @@
 /*=============================================================================
- * Author: Spacebeetech - Navegaci�n
+ * Author: Spacebeetech - Navegacion
  * Date: 16/05/2022 
  * Board: Atmel ARM Cortex-M7 Xplained Ultra Dev Board ATSAMV71-XULT ATSAMV71Q21B
  * Entorno de programacion: MPLABX - Harmony

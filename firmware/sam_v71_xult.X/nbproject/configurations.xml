@@ -88,6 +88,138 @@
           </logicalFolder>
         </logicalFolder>
       </logicalFolder>
+      <logicalFolder name="lib" displayName="lib" projectFiles="true">
+        <logicalFolder name="config" displayName="config" projectFiles="true">
+          <itemPath>../lib/config/rovertito_config.h</itemPath>
+        </logicalFolder>
+        <logicalFolder name="epos4" displayName="epos4" projectFiles="true">
+          <itemPath>../lib/epos4/epos4.h</itemPath>
+        </logicalFolder>
+        <logicalFolder name="imu" displayName="imu" projectFiles="true">
+          <itemPath>../lib/imu/I2Cdev.h</itemPath>
+          <itemPath>../lib/imu/Imu.h</itemPath>
+          <itemPath>../lib/imu/imu_config.h</itemPath>
+          <itemPath>../lib/imu/MPU6050.h</itemPath>
+        </logicalFolder>
+        <logicalFolder name="kinematics" displayName="kinematics" projectFiles="true">
+          <itemPath>../lib/kinematics/kinematics.h</itemPath>
+        </logicalFolder>
+        <logicalFolder name="mcan_fd_interrupt"
+                       displayName="mcan_fd_interrupt"
+                       projectFiles="true">
+          <itemPath>../lib/mcan_fd_interrupt/mcan_fd_interrupt.h</itemPath>
+        </logicalFolder>
+        <logicalFolder name="pid" displayName="pid" projectFiles="true">
+          <itemPath>../lib/pid/PID.h</itemPath>
+        </logicalFolder>
+        <logicalFolder name="ros_lib" displayName="ros_lib" projectFiles="true">
+          <logicalFolder name="geometry_msgs"
+                         displayName="geometry_msgs"
+                         projectFiles="true">
+            <itemPath>../lib/ros_lib/geometry_msgs/Accel.h</itemPath>
+            <itemPath>../lib/ros_lib/geometry_msgs/AccelStamped.h</itemPath>
+            <itemPath>../lib/ros_lib/geometry_msgs/AccelWithCovariance.h</itemPath>
+            <itemPath>../lib/ros_lib/geometry_msgs/AccelWithCovarianceStamped.h</itemPath>
+            <itemPath>../lib/ros_lib/geometry_msgs/Inertia.h</itemPath>
+            <itemPath>../lib/ros_lib/geometry_msgs/InertiaStamped.h</itemPath>
+            <itemPath>../lib/ros_lib/geometry_msgs/Point.h</itemPath>
+            <itemPath>../lib/ros_lib/geometry_msgs/Point32.h</itemPath>
+            <itemPath>../lib/ros_lib/geometry_msgs/PointStamped.h</itemPath>
+            <itemPath>../lib/ros_lib/geometry_msgs/Polygon.h</itemPath>
+            <itemPath>../lib/ros_lib/geometry_msgs/PolygonStamped.h</itemPath>
+            <itemPath>../lib/ros_lib/geometry_msgs/Pose.h</itemPath>
+            <itemPath>../lib/ros_lib/geometry_msgs/Pose2D.h</itemPath>
+            <itemPath>../lib/ros_lib/geometry_msgs/PoseArray.h</itemPath>
+            <itemPath>../lib/ros_lib/geometry_msgs/PoseStamped.h</itemPath>
+            <itemPath>../lib/ros_lib/geometry_msgs/PoseWithCovariance.h</itemPath>
+            <itemPath>../lib/ros_lib/geometry_msgs/PoseWithCovarianceStamped.h</itemPath>
+            <itemPath>../lib/ros_lib/geometry_msgs/Quaternion.h</itemPath>
+            <itemPath>../lib/ros_lib/geometry_msgs/QuaternionStamped.h</itemPath>
+            <itemPath>../lib/ros_lib/geometry_msgs/Transform.h</itemPath>
+            <itemPath>../lib/ros_lib/geometry_msgs/TransformStamped.h</itemPath>
+            <itemPath>../lib/ros_lib/geometry_msgs/Twist.h</itemPath>
+            <itemPath>../lib/ros_lib/geometry_msgs/TwistStamped.h</itemPath>
+            <itemPath>../lib/ros_lib/geometry_msgs/TwistWithCovariance.h</itemPath>
+            <itemPath>../lib/ros_lib/geometry_msgs/TwistWithCovarianceStamped.h</itemPath>
+            <itemPath>../lib/ros_lib/geometry_msgs/Vector3.h</itemPath>
+            <itemPath>../lib/ros_lib/geometry_msgs/Vector3Stamped.h</itemPath>
+            <itemPath>../lib/ros_lib/geometry_msgs/Wrench.h</itemPath>
+            <itemPath>../lib/ros_lib/geometry_msgs/WrenchStamped.h</itemPath>
+          </logicalFolder>
+          <logicalFolder name="lino_msgs" displayName="lino_msgs" projectFiles="true">
+            <itemPath>../lib/ros_lib/lino_msgs/Imu.h</itemPath>
+            <itemPath>../lib/ros_lib/lino_msgs/PID.h</itemPath>
+            <itemPath>../lib/ros_lib/lino_msgs/Velocities.h</itemPath>
+          </logicalFolder>
+          <logicalFolder name="ros" displayName="ros" projectFiles="true">
+            <itemPath>../lib/ros_lib/ros/duration.h</itemPath>
+            <itemPath>../lib/ros_lib/ros/msg.h</itemPath>
+            <itemPath>../lib/ros_lib/ros/node_handle.h</itemPath>
+            <itemPath>../lib/ros_lib/ros/publisher.h</itemPath>
+            <itemPath>../lib/ros_lib/ros/service_client.h</itemPath>
+            <itemPath>../lib/ros_lib/ros/service_server.h</itemPath>
+            <itemPath>../lib/ros_lib/ros/subscriber.h</itemPath>
+            <itemPath>../lib/ros_lib/ros/time.h</itemPath>
+          </logicalFolder>
+          <logicalFolder name="rosserial_arduino"
+                         displayName="rosserial_arduino"
+                         projectFiles="true">
+            <itemPath>../lib/ros_lib/rosserial_arduino/Adc.h</itemPath>
+            <itemPath>../lib/ros_lib/rosserial_arduino/Test.h</itemPath>
+          </logicalFolder>
+          <logicalFolder name="rosserial_msgs"
+                         displayName="rosserial_msgs"
+                         projectFiles="true">
+            <itemPath>../lib/ros_lib/rosserial_msgs/Log.h</itemPath>
+            <itemPath>../lib/ros_lib/rosserial_msgs/RequestMessageInfo.h</itemPath>
+            <itemPath>../lib/ros_lib/rosserial_msgs/RequestParam.h</itemPath>
+            <itemPath>../lib/ros_lib/rosserial_msgs/RequestServiceInfo.h</itemPath>
+            <itemPath>../lib/ros_lib/rosserial_msgs/TopicInfo.h</itemPath>
+          </logicalFolder>
+          <logicalFolder name="std_msgs" displayName="std_msgs" projectFiles="true">
+            <itemPath>../lib/ros_lib/std_msgs/Bool.h</itemPath>
+            <itemPath>../lib/ros_lib/std_msgs/Byte.h</itemPath>
+            <itemPath>../lib/ros_lib/std_msgs/ByteMultiArray.h</itemPath>
+            <itemPath>../lib/ros_lib/std_msgs/Char.h</itemPath>
+            <itemPath>../lib/ros_lib/std_msgs/ColorRGBA.h</itemPath>
+            <itemPath>../lib/ros_lib/std_msgs/Duration.h</itemPath>
+            <itemPath>../lib/ros_lib/std_msgs/Empty.h</itemPath>
+            <itemPath>../lib/ros_lib/std_msgs/Float32.h</itemPath>
+            <itemPath>../lib/ros_lib/std_msgs/Float32MultiArray.h</itemPath>
+            <itemPath>../lib/ros_lib/std_msgs/Float64.h</itemPath>
+            <itemPath>../lib/ros_lib/std_msgs/Float64MultiArray.h</itemPath>
+            <itemPath>../lib/ros_lib/std_msgs/Header.h</itemPath>
+            <itemPath>../lib/ros_lib/std_msgs/Int16.h</itemPath>
+            <itemPath>../lib/ros_lib/std_msgs/Int16MultiArray.h</itemPath>
+            <itemPath>../lib/ros_lib/std_msgs/Int32.h</itemPath>
+            <itemPath>../lib/ros_lib/std_msgs/Int32MultiArray.h</itemPath>
+            <itemPath>../lib/ros_lib/std_msgs/Int64.h</itemPath>
+            <itemPath>../lib/ros_lib/std_msgs/Int64MultiArray.h</itemPath>
+            <itemPath>../lib/ros_lib/std_msgs/Int8.h</itemPath>
+            <itemPath>../lib/ros_lib/std_msgs/Int8MultiArray.h</itemPath>
+            <itemPath>../lib/ros_lib/std_msgs/MultiArrayDimension.h</itemPath>
+            <itemPath>../lib/ros_lib/std_msgs/MultiArrayLayout.h</itemPath>
+            <itemPath>../lib/ros_lib/std_msgs/String.h</itemPath>
+            <itemPath>../lib/ros_lib/std_msgs/Time.h</itemPath>
+            <itemPath>../lib/ros_lib/std_msgs/UInt16.h</itemPath>
+            <itemPath>../lib/ros_lib/std_msgs/UInt16MultiArray.h</itemPath>
+            <itemPath>../lib/ros_lib/std_msgs/UInt32.h</itemPath>
+            <itemPath>../lib/ros_lib/std_msgs/UInt32MultiArray.h</itemPath>
+            <itemPath>../lib/ros_lib/std_msgs/UInt64.h</itemPath>
+            <itemPath>../lib/ros_lib/std_msgs/UInt64MultiArray.h</itemPath>
+            <itemPath>../lib/ros_lib/std_msgs/UInt8.h</itemPath>
+            <itemPath>../lib/ros_lib/std_msgs/UInt8MultiArray.h</itemPath>
+          </logicalFolder>
+          <itemPath>../lib/ros_lib/ArduinoHardware.h</itemPath>
+          <itemPath>../lib/ros_lib/ArduinoTcpHardware.h</itemPath>
+          <itemPath>../lib/ros_lib/ros.h</itemPath>
+        </logicalFolder>
+        <logicalFolder name="Usart1_FreeRTOS"
+                       displayName="Usart1_FreeRTOS"
+                       projectFiles="true">
+          <itemPath>../lib/Usart1_FreeRTOS/Uart1_FreeRTOS.h</itemPath>
+        </logicalFolder>
+      </logicalFolder>
       <logicalFolder name="f2" displayName="packs" projectFiles="true">
         <logicalFolder name="f1" displayName="ATSAMV71Q21B_DFP" projectFiles="true">
           <logicalFolder name="f1" displayName="component" projectFiles="true">
@@ -213,9 +345,6 @@
         </logicalFolder>
       </logicalFolder>
       <itemPath>../src/tarea_principal.h</itemPath>
-      <itemPath>../src/tarea2.h</itemPath>
-      <itemPath>../src/tarea_uart.h</itemPath>
-      <itemPath>../../../../../../../../../Nube/OneDrive - UTN San Francisco/nube/nube/trabajos/SpaceBee/Tito_firmware/firmware/src/mcan_fd_interrupt.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -315,15 +444,56 @@
           <itemPath>../src/third_party/rtos/FreeRTOS/Source/stream_buffer.c</itemPath>
         </logicalFolder>
       </logicalFolder>
+      <logicalFolder name="lib" displayName="lib" projectFiles="true">
+        <logicalFolder name="config" displayName="config" projectFiles="true">
+        </logicalFolder>
+        <logicalFolder name="epos4" displayName="epos4" projectFiles="true">
+        </logicalFolder>
+        <logicalFolder name="imu" displayName="imu" projectFiles="true">
+        </logicalFolder>
+        <logicalFolder name="kinematics" displayName="kinematics" projectFiles="true">
+        </logicalFolder>
+        <logicalFolder name="mcan_fd_interrupt"
+                       displayName="mcan_fd_interrupt"
+                       projectFiles="true">
+          <itemPath>../lib/mcan_fd_interrupt/mcan_fd_interrupt.c</itemPath>
+        </logicalFolder>
+        <logicalFolder name="pid" displayName="pid" projectFiles="true">
+        </logicalFolder>
+        <logicalFolder name="ros_lib" displayName="ros_lib" projectFiles="true">
+          <logicalFolder name="geometry_msgs"
+                         displayName="geometry_msgs"
+                         projectFiles="true">
+          </logicalFolder>
+          <logicalFolder name="lino_msgs" displayName="lino_msgs" projectFiles="true">
+          </logicalFolder>
+          <logicalFolder name="ros" displayName="ros" projectFiles="true">
+          </logicalFolder>
+          <logicalFolder name="rosserial_arduino"
+                         displayName="rosserial_arduino"
+                         projectFiles="true">
+          </logicalFolder>
+          <logicalFolder name="rosserial_msgs"
+                         displayName="rosserial_msgs"
+                         projectFiles="true">
+          </logicalFolder>
+          <logicalFolder name="std_msgs" displayName="std_msgs" projectFiles="true">
+          </logicalFolder>
+        </logicalFolder>
+        <logicalFolder name="Usart1_FreeRTOS"
+                       displayName="Usart1_FreeRTOS"
+                       projectFiles="true">
+          <itemPath>../lib/Usart1_FreeRTOS/Uart1_FreeRTOS.c</itemPath>
+        </logicalFolder>
+      </logicalFolder>
       <itemPath>../src/main_v71.c</itemPath>
       <itemPath>../src/tarea_principal.c</itemPath>
-      <itemPath>../src/tarea2.c</itemPath>
-      <itemPath>../src/tarea_uart.c</itemPath>
-      <itemPath>../../../../../../../../../Nube/OneDrive - UTN San Francisco/nube/nube/trabajos/SpaceBee/Tito_firmware/firmware/src/mcan_fd_interrupt.c</itemPath>
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
     <Elem>../src</Elem>
+    <Elem>../lib</Elem>
+    <Elem>../lib/mcan_fd_interrupt</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
