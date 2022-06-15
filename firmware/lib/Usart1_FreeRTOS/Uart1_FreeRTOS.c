@@ -92,10 +92,12 @@ void Uart1_println (const char * mensaje)
   ========================================================================*/
 uint8_t Uart1_Recibir (void)
 {
+  uint8_t readByte2=' ';  
   portENTER_CRITICAL();                                  //Seccion critica para evitar que se ejecute cambio de contexto alterando el proceso de guardado de la variable
-  return readByte;                                       //Retorno mensaje recibido previamente en la tarea tasc_uart_task
+  readByte2=readByte;
   readByte=' ';                                          //Limpio la variable
   portEXIT_CRITICAL();                                   //Salgo de seccion critica
+  return readByte2;                                       //Retorno mensaje recibido previamente en la tarea tasc_uart_task
 }
 
 /*========================================================================

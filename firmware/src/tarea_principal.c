@@ -76,8 +76,8 @@ void TAREA_PRINCIPAL_Tasks ( void )
         if (readByte != ' ')                                   //Si el byte es distinto del caracter ' '
         {   
             char destino[8]="        ";
-            sprintf(destino, "Tecla: %u", readByte);
-            Uart1_print(destino);
+            sprintf(destino, "Tecla: %s", &readByte);
+            Uart1_println(destino);
 
             if (readByte == '1')                               //Si el dato recibido es el caracter 1
             {
