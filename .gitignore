@@ -1,2 +1,3 @@
-/firmware/sam_v71_xult.X/build/
-/firmware/sam_v71_xult.X/dist/
+**/build/
+**/dist/
+**/.generated_files/
