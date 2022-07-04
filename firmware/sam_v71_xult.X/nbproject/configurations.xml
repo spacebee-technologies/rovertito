@@ -89,6 +89,10 @@
         </logicalFolder>
       </logicalFolder>
       <logicalFolder name="lib" displayName="lib" projectFiles="true">
+        <logicalFolder name="CANopen" displayName="CANopen" projectFiles="true">
+          <itemPath>../lib/CANopen/CANopen.h</itemPath>
+          <itemPath>../lib/CANopen/Dictionary.h</itemPath>
+        </logicalFolder>
         <logicalFolder name="config" displayName="config" projectFiles="true">
           <itemPath>../lib/config/rovertito_config.h</itemPath>
         </logicalFolder>
@@ -445,9 +449,13 @@
         </logicalFolder>
       </logicalFolder>
       <logicalFolder name="lib" displayName="lib" projectFiles="true">
+        <logicalFolder name="CANopen" displayName="CANopen" projectFiles="true">
+          <itemPath>../lib/CANopen/CANopen.c</itemPath>
+        </logicalFolder>
         <logicalFolder name="config" displayName="config" projectFiles="true">
         </logicalFolder>
         <logicalFolder name="epos4" displayName="epos4" projectFiles="true">
+          <itemPath>../lib/epos4/epos4.c</itemPath>
         </logicalFolder>
         <logicalFolder name="imu" displayName="imu" projectFiles="true">
         </logicalFolder>
