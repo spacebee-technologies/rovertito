@@ -7,6 +7,7 @@
  * Descripcion: Libreria CANopen utilizando preiferico MCAN con libreria mcan_fd_interrupt.c
  *              Soporte SDO en modo Expedited Read y Expedited Write. No soporta lectura y escritura por segmentos.
  *              Proximas mejores: Optimizar diccionario, crear soporte PDO, sincronizacion, SDO abort code, codigos de error.
+ *              Esta libreria funciona para FreeRTOS y esta protegida por un semaforo binario para evitar conflictos ya que can es un recurso compartido.
 *===========================================================================*/
 
 /*=====================[ Inclusiones ]============================*/
@@ -128,7 +129,12 @@ uint8_t Verify_writing_by_can(void){
                             2  = si no se obtuvo respuesta del servidor (solo funciona con mensajes SDO en modo cliente)
                             3  = si la respuesta del servidor no corresponde con el mensaje enviado (solo funciona con mensajes SDO en modo cliente)
                             4  = si la maquina de estados no paso la inicializacion
-  ========================================================================*/
+  Funcionamiento: Se debe llamar cuando se quiere mandar un mensaje SDO CANopen por MCAN
+                  Funcionamiento interno cada vez que se llamaa esta funcion:
+                  Genera el header a enviar por MCAN con la forma de un mensaje SDO y lo envia por MCAN.
+                  Si esta en modo cliente, espera a recibir un mensaje can con la confirmacion de escritura sobre diccionario o una recepcion de dato (segun el comando seleccionado).
+                  Si esta en modo servidor(esclavo), finaliza la funcion sin esperar confirmacion, es decir solo envia el dato.
+========================================================================*/
 uint8_t CANopen_SDO_Expedited_Write(uint8_t node_id, uint8_t command, uint16_t index, uint8_t subindex,  uint8_t *data, uint8_t mode){
     if(state==CANopen_PRE_OPERATIONAL || state==CANopen_OPERATIONAL){         //Si el estado del CANopen permite mensajes SDO
         xSemaphoreTake(canMutexLock, portMAX_DELAY);                         //Tomo semaforo para proteger el bus can ya que es un recurso compartico con otras tareas
@@ -245,9 +251,14 @@ uint8_t CANopen_SDO_Expedited_Write(uint8_t node_id, uint8_t command, uint16_t i
                             1 = Si se presenta error al recibir mensaje
                             2 = Si fallo la recepcion
                             3 = Si el mensaje recibido no es SDO Rx
-                            4 = Mensaje SDO recibido y paramtros enviados correctamente
+                            4 = Mensaje SDO recibido y parametros enviados correctamente
                             5 = Mensaje SDO recibido pero no es para este dispositivo (id diferente)
-                            6 = Mensaje SDO recibido y paramtros enviados incorrectamente
+                            6 = Mensaje SDO recibido y parametros enviados incorrectamente
+  Funcionamiento: Se debe llamar continuamente a esta funcion desde alguna tarea u funcion para verificar constantemente la llega de un nuevo mensaje CANopen
+                  Funcionamiento interno cada vez que se llamaa esta funcion:
+                  En caso de recibir correctamente un mensaje SDO CANopen, se anliza si es de escritura o lectura sobre el diccionario ya sea dato de 8 16 o 32 bits.
+                  Si es de escritura, guarda el dato recibido en el diccionario correspondiente en el index y subindex indicado en el mensaje
+                  Si es de lectura, se lee el valor del diccionario correspondiente en el index y subindex indicado en el mensaje CANopen y luego se envia por CANopen mediante mensaje SDO con la funcion CANopen_SDO_Expedited_Write()
   ========================================================================*/
 uint8_t CANopen_SDO_Expedited_Read(uint16_t *index, uint8_t *subindex){
     xSemaphoreTake(canMutexLock, portMAX_DELAY);                    //Tomo semaforo para proteger el bus can ya que es un recurso compartico con otras tareas
@@ -437,6 +448,7 @@ void CANopen_STOP(void){
                          uint8_t dictionary = diccionario al cual se desea escribir (32, 16, 8)
   Retorna:               True si se puedo escribir
                          False si no se puedo escribir
+  Importante:            Esta funcion implementa seccion critica
   ========================================================================*/
 bool CANopen_Write_Dictionary(uint16_t index, uint8_t subindex, uint32_t data, uint8_t dictionary){
     bool retorno = false;
@@ -490,6 +502,7 @@ bool CANopen_Write_Dictionary(uint16_t index, uint8_t subindex, uint32_t data, u
                          uint8_t dictionary = diccionario al cual se desea escribir (32, 16, 8)
   Retorna:               True si se puedo leer
                          False si no se puedo leer
+  Importante:            Esta funcion implementa seccion critica
   ========================================================================*/
 bool CANopen_Read_Dictionary(uint16_t index, uint8_t subindex, uint32_t *data, uint8_t dictionary){
     bool retorno = false;
