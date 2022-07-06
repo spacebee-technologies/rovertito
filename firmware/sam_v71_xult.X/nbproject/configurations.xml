@@ -90,6 +90,10 @@
       </logicalFolder>
       <logicalFolder name="lib" displayName="lib" projectFiles="true">
         <logicalFolder name="CANopen" displayName="CANopen" projectFiles="true">
+          <logicalFolder name="Example" displayName="Example" projectFiles="true">
+            <logicalFolder name="SDO_message" displayName="SDO_message" projectFiles="true">
+            </logicalFolder>
+          </logicalFolder>
           <itemPath>../lib/CANopen/CANopen.h</itemPath>
           <itemPath>../lib/CANopen/Dictionary.h</itemPath>
         </logicalFolder>
@@ -450,6 +454,12 @@
       </logicalFolder>
       <logicalFolder name="lib" displayName="lib" projectFiles="true">
         <logicalFolder name="CANopen" displayName="CANopen" projectFiles="true">
+          <logicalFolder name="Example" displayName="Example" projectFiles="true">
+            <logicalFolder name="SDO_message" displayName="SDO_message" projectFiles="true">
+              <itemPath>../lib/CANopen/Example/SDO_message/Client.c</itemPath>
+              <itemPath>../lib/CANopen/Example/SDO_message/Server.c</itemPath>
+            </logicalFolder>
+          </logicalFolder>
           <itemPath>../lib/CANopen/CANopen.c</itemPath>
         </logicalFolder>
         <logicalFolder name="config" displayName="config" projectFiles="true">
@@ -501,7 +511,6 @@
   <sourceRootList>
     <Elem>../src</Elem>
     <Elem>../lib</Elem>
-    <Elem>../lib/mcan_fd_interrupt</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -511,7 +520,7 @@
         <targetDevice>ATSAMV71Q21B</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool>EdbgTool</platformTool>
+        <platformTool>noID</platformTool>
         <languageToolchain>XC32</languageToolchain>
         <languageToolchainVersion>4.00</languageToolchainVersion>
         <platform>3</platform>
@@ -547,6 +556,14 @@
         <makeCustomizationEnableLongLines>false</makeCustomizationEnableLongLines>
         <makeCustomizationNormalizeHexFile>false</makeCustomizationNormalizeHexFile>
       </makeCustomizationType>
+      <item path="../lib/CANopen/Example/SDO_message/Client.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../lib/CANopen/Example/SDO_message/Server.c"
+            ex="true"
+            overriding="false">
+      </item>
       <AtmelIceTool>
         <property key="AutoSelectMemRanges" value="auto"/>
         <property key="communication.interface" value="swd"/>
@@ -1259,17 +1276,13 @@
         <property key="communication.activationmode" value="nohv"/>
         <property key="communication.interface" value="swd"/>
         <property key="communication.speed" value="2.000"/>
-        <property key="debugoptions.debug-startup" value="Use system settings"/>
-        <property key="debugoptions.reset-behaviour" value="Use system settings"/>
         <property key="debugoptions.useswbreakpoints" value="false"/>
         <property key="firmware.path"
                   value="Press to browse for a specific firmware version"/>
         <property key="firmware.toolpack"
                   value="Press to select which tool pack to use"/>
         <property key="firmware.update.action" value="firmware.update.use.latest"/>
-        <property key="freeze.timers" value="false"/>
         <property key="lastid" value=""/>
-        <property key="loader.board_file" value="${ProjectDir}/board.xboard"/>
         <property key="memories.aux" value="false"/>
         <property key="memories.bootflash" value="true"/>
         <property key="memories.configurationmemory" value="true"/>
@@ -1294,9 +1307,7 @@
         <property key="programoptions.preserveprogramrange" value="false"/>
         <property key="programoptions.preserveuserid" value="false"/>
         <property key="programoptions.programuserotp" value="false"/>
-        <property key="script.has_reset" value="true"/>
         <property key="script.log_level" value="0"/>
-        <property key="script.reset_by_pin" value="false"/>
         <property key="script.reset_delay" value="0"/>
         <property key="script.show_output" value="false"/>
         <property key="toolpack.updateoptions"

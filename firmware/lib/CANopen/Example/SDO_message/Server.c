@@ -25,8 +25,7 @@ void TAREA(void *pvParameters ){
   uint8_t resultado=CANopen_init();
   if (resultado == 0){ Uart1_println("CANopen was initialized and is in pre-operational mode"); }
   if (resultado == 1){ Uart1_println("No se pudo crear el bloqueo mutex"); }
-  if (resultado == 2){ Uart1_println("No se pudo crear la tarea_CAN"); }
-  if (resultado == 3){ Uart1_println("Error al mandar mensaje Boot_Up");  CANopen_STOP(); }  
+  if (resultado == 2){ Uart1_println("Error al mandar mensaje Boot_Up");  CANopen_STOP(); }  
   
   while(true){
 
@@ -68,7 +67,7 @@ void TAREA2(void *pvParameters ){
     int8_t data[3]={0};
     uint16_t index=0x607A;
     uint8_t subindex=0x00;
-    bool res = CANopen_Read_Dictionary(index, subindex, data, 32)
+    bool res = CANopen_Read_Dictionary(index, subindex, data, 32);
     
     if(res == true){
         Uart1_println("Lectura correcta");

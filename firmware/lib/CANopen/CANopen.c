@@ -254,6 +254,7 @@ uint8_t CANopen_SDO_Expedited_Write(uint8_t node_id, uint8_t command, uint16_t i
                             4 = Mensaje SDO recibido y parametros enviados correctamente
                             5 = Mensaje SDO recibido pero no es para este dispositivo (id diferente)
                             6 = Mensaje SDO recibido y parametros enviados incorrectamente
+                            7 = Maquina de estado no esta en preoperation o superior
   Funcionamiento: Se debe llamar continuamente a esta funcion desde alguna tarea u funcion para verificar constantemente la llega de un nuevo mensaje CANopen
                   Funcionamiento interno cada vez que se llamaa esta funcion:
                   En caso de recibir correctamente un mensaje SDO CANopen, se anliza si es de escritura o lectura sobre el diccionario ya sea dato de 8 16 o 32 bits.
@@ -262,145 +263,147 @@ uint8_t CANopen_SDO_Expedited_Write(uint8_t node_id, uint8_t command, uint16_t i
   ========================================================================*/
 uint8_t CANopen_SDO_Expedited_Read(uint16_t *index, uint8_t *subindex){
     xSemaphoreTake(canMutexLock, portMAX_DELAY);                    //Tomo semaforo para proteger el bus can ya que es un recurso compartico con otras tareas
-    //Configuro recepcion de mensaje can
-    bool retorno = mcan_fd_interrupt_recibir(&rx_messageID, rx_message, &rx_messageLength, &timestamp, MCAN_MSG_ATTR_RX_BUFFER, &msgFrameAttr);
-    if (retorno == false)  
-    {
-        xSemaphoreGive(canMutexLock);                               //Libero semaforo
-        return 1;                                                   //Retorno desde la funcion
-    }
-    volatile static CAN_ESTADO estado = CAN_LIBRE;                  //Variable para guardar el estado de la aplicación CAN
-    //Bucle infinito con timeout para verificar la recepcion en periferico can
-    uint8_t interacciones=0;                                        //Interacciones para timeout
-    uint8_t retornar=9;                                             //Inicializo en un valor no utilizado
-    while (true){
-        estado=Resultado();
-        switch (estado)
+    uint8_t retornar=7;                                             //Inicializo en un valor no utilizado
+    if(state==CANopen_PRE_OPERATIONAL || state==CANopen_OPERATIONAL){         //Si el estado del CANopen permite mensajes SDO
+        //Configuro recepcion de mensaje can
+        bool retorno = mcan_fd_interrupt_recibir(&rx_messageID, rx_message, &rx_messageLength, &timestamp, MCAN_MSG_ATTR_RX_BUFFER, &msgFrameAttr);
+        if (retorno == false)  
         {
-            case CAN_RECEPCION_OK:                                    
+            xSemaphoreGive(canMutexLock);                               //Libero semaforo
+            return 1;                                                   //Retorno desde la funcion
+        }
+        volatile static CAN_ESTADO estado = CAN_LIBRE;                  //Variable para guardar el estado de la aplicación CAN
+        //Bucle infinito con timeout para verificar la recepcion en periferico can
+        uint8_t interacciones=0;                                        //Interacciones para timeout
+        while (true){
+            estado=Resultado();
+            switch (estado)
             {
-                //Verifico que el mensaje recibido sea el correcto
-                if(rx_messageID>=0x601 && rx_messageID<=0x67F){     //Si el mensaje tiene cobid SDO Rx
-                    if(rx_messageID==(0x600+CANopen_nodeid)){       //El mensaje esta dedicado a este nodo
-                        
-                        if(rx_message[0]==0x40){                    //Si el comando SDO es lectura
-                            *index=(rx_message[2]<<8)+rx_message[1];//Paso index
-                            *subindex=rx_message[3];                //Paso subindex
-                            retornar = 4;                           //Indico que se retorna Mensaje SDO recibido y es necesario enviar parametros del diccionario
-                            break;                                  //Salgo del switch
-                        }
+                case CAN_RECEPCION_OK:                                    
+                {
+                    //Verifico que el mensaje recibido sea el correcto
+                    if(rx_messageID>=0x601 && rx_messageID<=0x67F){     //Si el mensaje tiene cobid SDO Rx
+                        if(rx_messageID==(0x600+CANopen_nodeid)){       //El mensaje esta dedicado a este nodo
+                            
+                            if(rx_message[0]==0x40){                    //Si el comando SDO es lectura
+                                *index=(rx_message[2]<<8)+rx_message[1];//Paso index
+                                *subindex=rx_message[3];                //Paso subindex
+                                retornar = 4;                           //Indico que se retorna Mensaje SDO recibido y es necesario enviar parametros del diccionario
+                                break;                                  //Salgo del switch
+                            }
 
-                        if(rx_message[0]==0x43){           //Si el comando SDO es escritura de 4 bytes
-                            *index=(rx_message[2]<<8)+rx_message[1];//Paso index
-                            *subindex=rx_message[3];                //Paso subindex
-                            uint32_t data=(rx_message[7]<<24)+(rx_message[6]<<16)+(rx_message[5]<<8)+rx_message[4];
-                            CANopen_Write_Dictionary(*index, *subindex, data, 32); //Escribo diccionario de objetos
-                            retornar = 0;                           //Indico que se retorna ok
-                            break;                                  //Salgo del switch
-                        }
+                            if(rx_message[0]==0x43){           //Si el comando SDO es escritura de 4 bytes
+                                *index=(rx_message[2]<<8)+rx_message[1];//Paso index
+                                *subindex=rx_message[3];                //Paso subindex
+                                uint32_t data=(rx_message[7]<<24)+(rx_message[6]<<16)+(rx_message[5]<<8)+rx_message[4];
+                                CANopen_Write_Dictionary(*index, *subindex, data, 32); //Escribo diccionario de objetos
+                                retornar = 0;                           //Indico que se retorna ok
+                                break;                                  //Salgo del switch
+                            }
 
-                        if(rx_message[0]==0x4B){                    //Si el comando SDO es escritura de 2 bytes
-                            *index=(rx_message[2]<<8)+rx_message[1];//Paso index
-                            *subindex=rx_message[3];                //Paso subindex
-                            uint16_t data=(rx_message[5]<<8)+rx_message[4];
-                            CANopen_Write_Dictionary(*index, *subindex, data, 16);//Escribo diccionario de objetos
-                            retornar = 0;                           //Indico que se retorna ok
-                            break;                                  //Salgo del switch
-                        }
+                            if(rx_message[0]==0x4B){                    //Si el comando SDO es escritura de 2 bytes
+                                *index=(rx_message[2]<<8)+rx_message[1];//Paso index
+                                *subindex=rx_message[3];                //Paso subindex
+                                uint16_t data=(rx_message[5]<<8)+rx_message[4];
+                                CANopen_Write_Dictionary(*index, *subindex, data, 16);//Escribo diccionario de objetos
+                                retornar = 0;                           //Indico que se retorna ok
+                                break;                                  //Salgo del switch
+                            }
 
-                        if(rx_message[0]==0x4F){                    //Si el comando SDO es escritura de 1 byte
-                            *index=(rx_message[2]<<8)+rx_message[1];//Paso index
-                            *subindex=rx_message[3];                //Paso subindex
-                            uint8_t data=rx_message[4];
-                            CANopen_Write_Dictionary(*index, *subindex, data, 16); //Escribo diccionario de objetos
-                            retornar = 0;                           //Indico que se retorna ok
-                            break;                                  //Salgo del switch
+                            if(rx_message[0]==0x4F){                    //Si el comando SDO es escritura de 1 byte
+                                *index=(rx_message[2]<<8)+rx_message[1];//Paso index
+                                *subindex=rx_message[3];                //Paso subindex
+                                uint8_t data=rx_message[4];
+                                CANopen_Write_Dictionary(*index, *subindex, data, 16); //Escribo diccionario de objetos
+                                retornar = 0;                           //Indico que se retorna ok
+                                break;                                  //Salgo del switch
+                            }
+                        }else{
+                            retornar = 5;                               //Indico que se retorna que el mensaje sdo es para otro nodo id
+                            break;                                      //Salgo del switch
                         }
+                        break;                                          //Salgo del switch
                     }else{
-                        retornar = 5;                               //Indico que se retorna que el mensaje sdo es para otro nodo id
-                        break;                                      //Salgo del switch
+                        retornar = 3;                                   //Indico que se retorna que no es mensaje con cobid SDO Rx
+                        break;                                          //Salgo del switch
                     }
-                    break;                                          //Salgo del switch
+                }
+                case CAN_RECEPCION_ERROR:                                    
+                {
+                    retornar = 2;                                       //Indico que se retorna error en mensaje de recepcion
+                    break;                                              //Salgo del switch
+                }
+                default:                                                //Sino
+                    interacciones++;                                    //Incremento intecciones
+                    break;                                              //Salgo del switch
+            }
+
+            if(retornar == 0 || retornar == 2 || retornar == 3 || retornar == 4 || retornar == 5){ //Si en el switch se establecio retorno
+                mcan_fd_interrupt_habilitar();                          //Habilito mcan para seguir operando en el proximo mensaje sdo
+                break;                                                  //Salgo del while true
+            }
+
+            if(interacciones*1>=CANopen_SDO_timeout){
+                retornar = 2;                                           //Indico que se retorna error en mensaje de recepcion
+                mcan_fd_interrupt_habilitar();                          //Habilito mcan para seguir operando en el proximo mensaje sdo
+                break;                                                  //Salgo del while true
+            }
+            vTaskDelay(1 / portTICK_PERIOD_MS );                        //Deje que la tarea quede inactiva por un tiempo determinado dejando que se produzca el cambio de contexto a otra tarea.
+        }
+        xSemaphoreGive(canMutexLock);
+
+        if(retornar==0){                                                //Si el comando recibido era de escritura y se escribio con exito, Envio mensaje de confirmacion
+            uint8_t data_ff[3]={0};
+            CANopen_SDO_Expedited_Write(CANopen_nodeid, 0x60, *index, *subindex,  data_ff, CANopen_SDO_mode_server);
+        }
+
+        if(retornar==4){                                                //Si el comando recibido era de lectura, envio dato desde el diccionario
+            uint32_t dataa;                                             //Variable para guardar el dato del diccionario
+            
+            if(rx_message[0]==0x23){
+                if(CANopen_Read_Dictionary(*index,*subindex, &dataa, 32)==true){ //Si existe el dato en el diccionario
+                    uint8_t data_byte[3]={0};  
+                    //En el diccionario se guarda el dato siendo primero el byte mas siginificativo. Para transmitir por CANopen es necesario transmitir primero el byte menos significativo (por eso se espeja el dato)
+                    data_byte[0]=(uint8_t)(dataa & 0x0F);
+                    data_byte[1]=(uint8_t)((dataa>>8) & 0x0F);
+                    data_byte[2]=(uint8_t)((dataa>>16) & 0x0F);
+                    data_byte[3]=(uint8_t)((dataa>>24) & 0x0F);
+                    if(CANopen_SDO_Expedited_Write(CANopen_nodeid, 0x60, *index, *subindex,  data_byte, CANopen_SDO_mode_server)!=0){   //Si no se envio correctamente el dato
+                        retornar=6;
+                    }
                 }else{
-                    retornar = 3;                                   //Indico que se retorna que no es mensaje con cobid SDO Rx
-                    break;                                          //Salgo del switch
-                }
-            }
-            case CAN_RECEPCION_ERROR:                                    
-            {
-                retornar = 2;                                       //Indico que se retorna error en mensaje de recepcion
-                break;                                              //Salgo del switch
-            }
-            default:                                                //Sino
-                interacciones++;                                    //Incremento intecciones
-                break;                                              //Salgo del switch
-        }
-
-        if(retornar == 0 || retornar == 2 || retornar == 3 || retornar == 4 || retornar == 5){ //Si en el switch se establecio retorno
-            mcan_fd_interrupt_habilitar();                          //Habilito mcan para seguir operando en el proximo mensaje sdo
-            break;                                                  //Salgo del while true
-        }
-
-        if(interacciones*1>=CANopen_SDO_timeout){
-            retornar = 2;                                           //Indico que se retorna error en mensaje de recepcion
-            mcan_fd_interrupt_habilitar();                          //Habilito mcan para seguir operando en el proximo mensaje sdo
-            break;                                                  //Salgo del while true
-        }
-        vTaskDelay(1 / portTICK_PERIOD_MS );                        //Deje que la tarea quede inactiva por un tiempo determinado dejando que se produzca el cambio de contexto a otra tarea.
-    }
-    xSemaphoreGive(canMutexLock);
-
-    if(retornar==0){                                                //Si el comando recibido era de escritura y se escribio con exito, Envio mensaje de confirmacion
-        uint8_t data_ff[3]={0};
-        CANopen_SDO_Expedited_Write(CANopen_nodeid, 0x60, *index, *subindex,  data_ff, CANopen_SDO_mode_server);
-    }
-
-    if(retornar==4){                                                //Si el comando recibido era de lectura, envio dato desde el diccionario
-        uint32_t dataa;                                             //Variable para guardar el dato del diccionario
-        
-        if(rx_message[0]==0x23){
-            if(CANopen_Read_Dictionary(*index,*subindex, &dataa, 32)==true){ //Si existe el dato en el diccionario
-                uint8_t data_byte[3]={0};  
-                //En el diccionario se guarda el dato siendo primero el byte mas siginificativo. Para transmitir por CANopen es necesario transmitir primero el byte menos significativo (por eso se espeja el dato)
-                data_byte[0]=(uint8_t)(dataa & 0x0F);
-                data_byte[1]=(uint8_t)((dataa>>8) & 0x0F);
-                data_byte[2]=(uint8_t)((dataa>>16) & 0x0F);
-                data_byte[3]=(uint8_t)((dataa>>24) & 0x0F);
-                if(CANopen_SDO_Expedited_Write(CANopen_nodeid, 0x60, *index, *subindex,  data_byte, CANopen_SDO_mode_server)!=0){   //Si no se envio correctamente el dato
                     retornar=6;
                 }
-            }else{
-                retornar=6;
-            }
-        } 
+            } 
 
-        if(rx_message[0]==0x2B){
-            if(CANopen_Read_Dictionary(*index,*subindex, &dataa, 16)==true){ //Si existe el dato en el diccionario
-                uint8_t data_byte[3]={0};  
-                //En el diccionario se guarda el dato siendo primero el byte mas siginificativo. Para transmitir por CANopen es necesario transmitir primero el byte menos significativo (por eso se espeja el dato)
-                data_byte[0]=(uint8_t)(dataa & 0x0F);
-                data_byte[1]=(uint8_t)((dataa>>8) & 0x0F);
-                if(CANopen_SDO_Expedited_Write(CANopen_nodeid, 0x60, *index, *subindex,  data_byte, CANopen_SDO_mode_server)!=0){   //Si no se envio correctamente el dato
+            if(rx_message[0]==0x2B){
+                if(CANopen_Read_Dictionary(*index,*subindex, &dataa, 16)==true){ //Si existe el dato en el diccionario
+                    uint8_t data_byte[3]={0};  
+                    //En el diccionario se guarda el dato siendo primero el byte mas siginificativo. Para transmitir por CANopen es necesario transmitir primero el byte menos significativo (por eso se espeja el dato)
+                    data_byte[0]=(uint8_t)(dataa & 0x0F);
+                    data_byte[1]=(uint8_t)((dataa>>8) & 0x0F);
+                    if(CANopen_SDO_Expedited_Write(CANopen_nodeid, 0x60, *index, *subindex,  data_byte, CANopen_SDO_mode_server)!=0){   //Si no se envio correctamente el dato
+                        retornar=6;
+                    }
+                }else{
                     retornar=6;
                 }
-            }else{
-                retornar=6;
-            }
-        }   
+            }   
 
-        if(rx_message[0]==0x2F){
-            if(CANopen_Read_Dictionary(*index,*subindex, &dataa, 8)==true){  //Si existe el dato en el diccionario
-                uint8_t data_byte[3]={0};  
-                //En el diccionario se guarda el dato siendo primero el byte mas siginificativo. Para transmitir por CANopen es necesario transmitir primero el byte menos significativo (por eso se espeja el dato)
-                data_byte[0]=(uint8_t)(dataa & 0x0F);
-                if(CANopen_SDO_Expedited_Write(CANopen_nodeid, 0x60, *index, *subindex,  data_byte, CANopen_SDO_mode_server)!=0){   //Si no se envio correctamente el dato
+            if(rx_message[0]==0x2F){
+                if(CANopen_Read_Dictionary(*index,*subindex, &dataa, 8)==true){  //Si existe el dato en el diccionario
+                    uint8_t data_byte[3]={0};  
+                    //En el diccionario se guarda el dato siendo primero el byte mas siginificativo. Para transmitir por CANopen es necesario transmitir primero el byte menos significativo (por eso se espeja el dato)
+                    data_byte[0]=(uint8_t)(dataa & 0x0F);
+                    if(CANopen_SDO_Expedited_Write(CANopen_nodeid, 0x60, *index, *subindex,  data_byte, CANopen_SDO_mode_server)!=0){   //Si no se envio correctamente el dato
+                        retornar=6;
+                    }
+                }else{
                     retornar=6;
                 }
-            }else{
-                retornar=6;
-            }
-        }                           
-        
+            }                           
+            
+        }
     }
     return retornar;                                                //Retorno desde la funcion
 }
